@@ -17,6 +17,9 @@ export const parse = (obj, paren, wrapper) => {
             // Regular selector
             let next = paren + ' ' + key;
 
+            // Pseudo Class
+            if (/\s:/g.test(next)) next = next.replace(/\s:/g, ':');
+
             // Nested
             if (/&/g.test(key)) next = key.replace(/&/g, paren);
 
